@@ -7,7 +7,7 @@ functionality for installing specific "built" components for the client.
 
 #Bower installs entire repositories
 
-```javascript
+```json
 {
     "name": "test",
     "version": "0.1",
@@ -25,7 +25,7 @@ with the components (if the component doesn't define a main, then the whole repo
 Bower installer provides an easy way for the main files to be installed or moved to one or more locations. Simply add to
 your bower.json an `install` key and `path` attribute:
 
-```javascript
+```json
 {
     "name": "test",
     "version": "0.1",
@@ -57,7 +57,7 @@ A lot of registered components for bower do not include bower.json configuration
 about any "main files" and therefore, by default bower-installer doesn't know about them either. Bower-installer
 can override an existing main file path or provide a non-existant one:
 
-```javascript
+```json
 {
     "name": "test",
     "version": "0.1",
@@ -80,7 +80,7 @@ If bower installer is run on this configuration, `require.js` and `backbone.js` 
 For one reason or another you may want to install multiple files from a single component. You can do this by providing
 an `Array` instead of a `String` inside the sources hash. Or you can use file matchers [https://github.com/isaacs/minimatch](https://github.com/isaacs/minimatch):
 
-```javascript
+```json
 {
     "name": "test",
     "version": "0.1",
@@ -103,9 +103,9 @@ an `Array` instead of a `String` inside the sources hash. Or you can use file ma
 
 #Install files to multiple locations
 Files can be installed to multiple locations based upon file type or regular expression. Do so by modifying the `path` to be a map of file-type
- locations. Example:
- ```javascript
- {
+locations. Example:
+```json
+{
     "name": "test",
     "version": "0.1",
     "dependencies": {
@@ -129,7 +129,7 @@ Files can be installed to multiple locations based upon file type or regular exp
 
 ###Configurable paths
 Paths can be custom configurable with variables (key, name and version):
-```javascript
+```json
 {
     "name": "test",
     "version": "0.0.2",
@@ -163,11 +163,11 @@ build/
 
 #Rename files during copy
 Files can be renamed when bower-installer is copying them to their new destination. Do so by modifying the `mapping` object. Example:
- ```javascript
+ ```json
  {
     "name": "test",
     "version": "0.1",
-    "dependencies/": {
+    "dependencies": {
         "jquery-ui": "latest"
     },
     "install": {
@@ -186,7 +186,7 @@ Files can be renamed when bower-installer is copying them to their new destinati
 
 #Ignore files
 Files can be ignored and not copied. Do so by adding the appropriate  to the `ignore` array. In the following example, `ember-model` has as dependency on `ember` and `handlebars`, so normally `ember` and the `handlebars` js files would be copied but in this case we don't want them copied over. Example:
- ```javascript
+ ```json
  {
     "name": "test",
     "version": "0.1",
@@ -203,7 +203,7 @@ Files can be ignored and not copied. Do so by adding the appropriate  to the `ig
 #Benefits from glob patterns
 You can specify a folder and get all files inside it preserving its folder structure.
 
-```javascript
+```json
 {
     "name": "test",
     "version": "0.1",
@@ -214,7 +214,7 @@ You can specify a folder and get all files inside it preserving its folder struc
         "path": {
             "scss": "build/styles",
             "js": "build/js"
-        }
+        },
         "sources": {
             "datatables-bootstrap3": "bower_components/datatables-bootstrap3/BS3/assets/**"
         }
