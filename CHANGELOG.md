@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 1.3.4 - 2016-12-13
+- Better reporting of issues with `bower.json` and/or `component.json` (Thanks to [Wang Dàpéng](https://github.com/rquadling/bower-installer/pull/161) and [Krishna Chaitanya](https://github.com/rquadling/bower-installer/pull/155))
+
 ## 1.3.3 - 2016-12-12
 - Fix multiple levels of subdirectory when mapping (Thanks to [Jonathan Tougas](https://github.com/rquadling/bower-installer/issues/160))
 
