@@ -16,6 +16,8 @@ function expectFilesToExist(files, run) {
 
 (function cleanDirs() {
   async.each([
+    'test/badBowerJson/build',
+    'test/badBowerJson/bower_components',
     'test/basic/build',
     'test/basic/bower_components',
     'test/bootstrap/build',
@@ -42,6 +44,13 @@ function expectFilesToExist(files, run) {
 })();
 
 describe("Bower Installer", function () {
+
+  it('Should pass badBowerJson', function (run) {
+    exec('node ../../bower-installer.js', {cwd: path.join(process.cwd(), 'test/badBowerJson')}, function (err, stdout, stderr) {
+      expect(err).not.toBeNull();
+      expect(run).toThrow();
+    });
+  }, TIMEOUT);
 
   it('Should pass basic', function (run) {
     exec('node ../../bower-installer.js', {cwd: path.join(process.cwd(), 'test/basic')}, function (err, stdout, stderr) {
