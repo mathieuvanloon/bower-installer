@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 1.3.5 - 2017-01-25
+- Will no longer crash if no configuration exists (Thanks to [Francisco Lourenço](https://github.com/rquadling/bower-installer/issues/163)).
+
 ## 1.3.4 - 2016-12-13
 - Better reporting of issues with `bower.json` and/or `component.json` (Thanks to [Wang Dàpéng](https://github.com/rquadling/bower-installer/pull/161) and [Krishna Chaitanya](https://github.com/rquadling/bower-installer/pull/155))
 

@@ -7,11 +7,20 @@ var TIMEOUT = 40000;
 
 function expectFilesToExist(files, run) {
   async.each(files, function (file, callback) {
-    fs.existsSync(path.join(process.cwd(), file)) ? callback() : callback("cannot find " + file);
+    fs.existsSync(path.join(process.cwd(), file)) ? callback() : callback('Cannot find ' + file);
   }, function (err) {
     expect(err).toBeNull();
     run();
   });
+}
+
+function expectDirectoriesToNotExist(directories, run) {
+    async.each(directories, function (directory, callback) {
+        fs.existsSync(path.join(process.cwd(), directory)) ? callback('Found ' + directory) : callback();
+    }, function (err) {
+        expect(err).toBeNull();
+        run();
+    });
 }
 
 (function cleanDirs() {
@@ -32,6 +41,8 @@ function expectFilesToExist(files, run) {
     'test/multiMain/bower_components',
     'test/multiPath/build',
     'test/multiPath/bower_components',
+    'test/noInstall/build',
+    'test/noInstall/bower_components',
     'test/glob/build',
     'test/glob/bower_components',
     'test/keyword/build',
@@ -61,6 +72,16 @@ describe("Bower Installer", function () {
       ], run);
     });
   }, TIMEOUT);
+
+  it('Should pass noInstall', function (run) {
+      exec('node ../../bower-installer.js', {cwd: path.join(process.cwd(), 'test/noInstall')}, function (err, stdout, stderr) {
+          expect(err).toBeNull();
+          expectDirectoriesToNotExist([
+              'test/noInstall/build'
+          ], run);
+      });
+  }, TIMEOUT);
+
   it('Should pass bootstrap', function (run) {
     exec('node ../../bower-installer.js', {cwd: path.join(process.cwd(), 'test/bootstrap')}, function (err, stdout, stderr) {
       expect(err).toBeNull();
