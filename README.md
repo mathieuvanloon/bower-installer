@@ -5,7 +5,7 @@ Tool for installing bower dependencies that won't include entire repos. Although
 as a light-weight tool to quickly install browser dependencies, it currently does not provide much
 functionality for installing specific "built" components for the client.
 
-#Bower installs entire repositories
+# Bower installs entire repositories
 
 ```json
 {
@@ -21,7 +21,7 @@ and copied into a components directory. This repository is quite large, when pro
 file are needed.  Bower conveniently provides the `bower list --paths` command to list the actual main files associated
 with the components (if the component doesn't define a main, then the whole repository is listed instead).
 
-#Bower Installer
+# Bower Installer
 Bower installer provides an easy way for the main files to be installed or moved to one or more locations. Simply add to
 your bower.json an `install` key and `path` attribute:
 
@@ -52,7 +52,7 @@ bower-installer
 After executing this, `backbone.js` will exist under `some/path` relative to the location of your
 bower.json file.
 
-#Overriding main files
+# Overriding main files
 A lot of registered components for bower do not include bower.json configuration. Therefore, bower does not know
 about any "main files" and therefore, by default bower-installer doesn't know about them either. Bower-installer
 can override an existing main file path or provide a non-existant one:
@@ -76,7 +76,7 @@ can override an existing main file path or provide a non-existant one:
 If bower installer is run on this configuration, `require.js` and `backbone.js` will all appear under
 `some/path` relative to your bower.json file. 
 
-#Install multiple main files
+# Install multiple main files
 For one reason or another you may want to install multiple files from a single component. You can do this by providing
 an `Array` instead of a `String` inside the sources hash. Or you can use file matchers [https://github.com/isaacs/minimatch](https://github.com/isaacs/minimatch):
 
@@ -101,7 +101,7 @@ an `Array` instead of a `String` inside the sources hash. Or you can use file ma
 }
 ```
 
-#Install files to multiple locations
+# Install files to multiple locations
 Files can be installed to multiple locations based upon file type or regular expression. Do so by modifying the `path` to be a map of file-type
 locations. Example:
 ```json
@@ -127,7 +127,7 @@ locations. Example:
 }
 ```
 
-###Configurable paths
+# Configurable paths
 Paths can be custom configurable with variables (key, name and version):
 ```json
 {
@@ -161,7 +161,7 @@ build/
         js
 ```
 
-#Rename files during copy
+# Rename files during copy
 Files can be renamed when bower-installer is copying them to their new destination. Do so by modifying the `mapping` object. Example:
  ```json
  {
@@ -184,7 +184,7 @@ Files can be renamed when bower-installer is copying them to their new destinati
 }
 ```
 
-#Ignore files
+# Ignore files
 Files can be ignored and not copied. Do so by adding the appropriate  to the `ignore` array. In the following example, `ember-model` has as dependency on `ember` and `handlebars`, so normally `ember` and the `handlebars` js files would be copied but in this case we don't want them copied over. Example:
  ```json
  {
@@ -200,7 +200,7 @@ Files can be ignored and not copied. Do so by adding the appropriate  to the `ig
 }
 ```
 
-#Benefits from glob patterns
+# Benefits from glob patterns
 You can specify a folder and get all files inside it preserving its folder structure.
 
 ```json
